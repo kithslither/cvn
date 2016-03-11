@@ -15,6 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('trip', 'TripsController');
+Route::get('/dumptruck', 'TripsController@dumptruck');
+Route::get('equipment/create', 'EquipmentsController@create');
+Route::get('equipment', 'EquipmentsController@index');
+Route::post('equipment', 'EquipmentsController@store');
+
+
+
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
