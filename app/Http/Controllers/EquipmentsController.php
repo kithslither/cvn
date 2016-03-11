@@ -39,5 +39,11 @@ class EquipmentsController extends Controller
         return redirect('equipment');
     }
 
+    public function destroy($id){
+    	 $equipment = Equipments::find($id)->delete();
+        return redirect('equipment');
+
+    }
+
     
 }

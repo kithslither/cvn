@@ -150,7 +150,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i>Sub-Contructor</a></li>
+                <li><a href="{{ url('subcon/create') }}"><i class="fa fa-circle-o"></i>Sub-Contructor</a></li>
                 <li><a href="{{ url('equipment/create') }}"><i class="fa fa-circle-o"></i>Equipment</a></li>
                 <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>Editors</a></li>
               </ul>

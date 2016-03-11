@@ -3,7 +3,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-           Add Equipment
+           Add Sub-Contractor
           <!--   <small>Preview</small> -->
           </h1>
           <ol class="breadcrumb">
@@ -21,15 +21,11 @@
         <!-- info row -->
         
         <div class="row invoice-info">
-        {!! Form::open(['url' => 'equipment']) !!}
+        {!! Form::open(['url' => 'subcon']) !!}
         <div class="box-body">
          <div class="form-group">
-          {!! Form::label('equipment_id', 'Equipment Code:') !!}
-          {!! Form::text('equipment_id', null, ['class' => 'form-control']) !!}
-         </div>
-         <div class="form-group">
-          {!! Form::label('equipment_cat', 'Equipment type:') !!}
-          {!! Form::text('equipment_cat', null, ['class' => 'form-control']) !!}
+          {!! Form::label('subcon_name', 'Sub-Contractor:') !!}
+          {!! Form::text('subcon_name', null, ['class' => 'form-control']) !!}
          </div>
          <div class="form-group">
           {!!  Form::submit('Save', ['class' => 'btn btn-info']) !!}
@@ -62,24 +58,21 @@
               <thead>
               
                 <tr>
-                  <th class="text-center">No</th>
-                  <th class="text-center">Equipment code</th>
-                  <th class="text-center">Equipment type</th>
+                  
+                  <th class="text-center">Sub-Contractor ID</th>
+                  <th class="text-center">Sub-Contractor Name</th>
                   <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($equipments as $equipment)
+                @foreach($subcons as $subcon)
                 <tr class="text-center">
-                  <td>{{ $equipment->id}}</td>
-                  <td>{{ $equipment->equipment_id}}</td>
-                  <td>{{ $equipment->equipment_cat}}</td>
+                  <td>{{ $subcon->id}}</td>
+                  <td>{{ $subcon->subcon_name}}</td>
+                  
                   <td>
-                  <!-- <button type="submit" class="btn btn-danger btn-sm">Delete</button> -->
-                  <!-- {!! Form::model($equipment, ['method' => 'delete', 'route' => ['equipment.destroy', $equipment->id], 'style' => 'display: inline;']) !!}
-                      {!! Form::submit('Edit', ['class' => 'btn btn-warning btn-sm']) !!}
-                  {!! Form::close() !!} -->
-                  {!! Form::model($equipment, ['method' => 'delete', 'route' => ['equipment.destroy', $equipment->id], 'style' => 'display: inline;']) !!}
+                 
+                  {!! Form::model($subcon, ['method' => 'delete', 'route' => ['subcon.destroy', $subcon->id], 'style' => 'display: inline;']) !!}
                       {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                   {!! Form::close() !!}
 

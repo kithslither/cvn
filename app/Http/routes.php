@@ -18,10 +18,10 @@ Route::get('/', function () {
 Route::resource('trip', 'TripsController');
 Route::get('/dumptruck', 'TripsController@dumptruck');
 Route::get('equipment/create', 'EquipmentsController@create');
-Route::get('equipment', 'EquipmentsController@index');
-Route::post('equipment', 'EquipmentsController@store');
-
-
+Route::resource('equipment', 'EquipmentsController');
+//Route::post('equipment', 'EquipmentsController@store');
+Route::get('subcon/create', 'SubconsController@create');
+Route::resource('subcon', 'SubconsController');
 
 
 
