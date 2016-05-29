@@ -11,18 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::resource('trip', 'TripsController');
-Route::get('/dumptruck', 'TripsController@dumptruck');
-Route::get('equipment/create', 'EquipmentsController@create');
-Route::resource('equipment', 'EquipmentsController');
-//Route::post('equipment', 'EquipmentsController@store');
-Route::get('subcon/create', 'SubconsController@create');
-Route::resource('subcon', 'SubconsController');
+/*Route::get('q', function(){
 
+	$trips = App\Trips::all();
+	foreach($trips as $trip){
+	
+		echo $trip->dt_id.' '. $trip->getPosterDumptruck().'</br>';
+		
+	}
+		
+
+});*/
 
 
 
@@ -40,5 +40,35 @@ Route::resource('subcon', 'SubconsController');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::auth();
+    Route::get('/home', 'HomeController@index');
+    
+    Route::get('/', function () {
+   /* return view('welcome');*/
+    return view('auth.login2');
 });
+Route::get('login2', function (){
+	return view('auth.login2');
+});
+
+Route::get('register2', function (){
+	return view('auth.register2');
+});
+
+Route::resource('trip', 'TripsController');
+/*Route::get('dumptruck/create', 'TripsController@create');*/
+Route::resource('dumptruck', 'DumptrucksController');
+Route::resource('backhoe', 'BackhoesController');
+//Route::post('equipment', 'EquipmentsController@store');
+//////Route::get('subcon/create', 'SubconsController@create');
+Route::resource('subcon', 'SubconsController');
+//Reports
+Route::get('daily', 'DailyReportsController@index');
+//Route::resource('monthly', 'MonthlyReportsController');
+Route::resource('type', 'TypesController');
+
+Route::get('monthly', 'SearchController@index');
+
+});
+
+

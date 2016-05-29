@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEquipmentsTable extends Migration
+class CreateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,13 @@ class CreateEquipmentsTable extends Migration
     public function up()
     {
         //
-        Schema::create('equipments', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-            //$table->integer('trip_id')->unsigned();
-            $table->string('equipment_cat');
-            $table->string('equipment_id');
+            $table->integer('trip_id')->unsigned();
+            $table->string('type_name');
+            $table->string('type_description');
             $table->rememberToken();
             $table->timestamps();
-
-            /*$table->foreign('trip_id')
-                    ->references('id')
-                    ->on('trips')
-                    ->onDelete('cascade');*/
         });
     }
 
@@ -36,6 +31,6 @@ class CreateEquipmentsTable extends Migration
     public function down()
     {
         //
-        Schema::drop('equipments');
+        Schema::drop('types');
     }
 }

@@ -16,11 +16,12 @@ class CreateTripsTable extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('delivery_number');
-            $table->integer('sub_con_id');
-            $table->integer('equipment_id');
-            $table->integer('load_id');
-            $table->integer('type_id');
-            $table->integer('total');
+            $table->integer('subcon_id')->unsigned;
+            $table->integer('dt_id')->unsigned;
+            $table->integer('bh_id')->unsigned;
+            $table->integer('load_id')->unsigned;
+            $table->integer('type_id')->unsigned;
+            $table->integer('total')->unsigned;     
             $table->string('stockpile');
             $table->string('source_area');
             $table->string('dump_area');
@@ -32,6 +33,11 @@ class CreateTripsTable extends Migration
             $table->time('time_arr');
             $table->rememberToken();
             $table->timestamps();
+
+            /*$table->foreign('subcon_id')
+                    ->references('id')
+                    ->on('subcons')
+                    ->onDelete('cascade');*/
         });
     }
 
@@ -45,3 +51,4 @@ class CreateTripsTable extends Migration
         Schema::drop('trips');
     }
 }
+ 

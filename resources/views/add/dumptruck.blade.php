@@ -3,7 +3,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-           Add Sub-Contractor
+           Add Backhoe
           <!--   <small>Preview</small> -->
           </h1>
           <ol class="breadcrumb">
@@ -21,11 +21,11 @@
         <!-- info row -->
         
         <div class="row invoice-info">
-        {!! Form::open(['url' => 'subcon']) !!}
+        {!! Form::open(['url' => 'dumptruck']) !!}
         <div class="box-body">
          <div class="form-group">
-          {!! Form::label('subcon_name', 'Sub-Contractor:') !!}
-          {!! Form::text('subcon_name', null, ['class' => 'form-control']) !!}
+          {!! Form::label('dt_code', 'Dump Truck Code:') !!}
+          {!! Form::text('dt_code', null, ['class' => 'form-control']) !!}
          </div>
          <div class="form-group">
           {!!  Form::submit('Save', ['class' => 'btn btn-info']) !!}
@@ -46,23 +46,8 @@
             </ul>
           </div>
         @endif
-          <!-- <form role="form">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Equipment code</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter code">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Equipment Type</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter type">
-                </div>
-                  <div class="form-group">
-                  <button type="submit" class="btn btn-default">Clear</button>
-                  <button type="submit" class="btn btn-info pull-right">Save</button> -->
-                  <!-- </div> /.box-footer                 
-                  </div>/.box-body -->
-                  
-         <!--  </form> -->
+          
+    
         </div><!-- /.row -->
         <!-- Table row -->
         <div class="box-footer"></div>
@@ -72,24 +57,24 @@
               <thead>
               
                 <tr>
-                  
-                  <th class="text-center">Sub-Contractor ID</th>
-                  <th class="text-center">Sub-Contractor Name</th>
+                  <!-- <th class="text-center">No.</th> -->
+                  <th class="text-center">No.</th>
+                  <th class="text-center">Dump Truck Code</th>
                   <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($subcons as $subcon)
+                @foreach($dumptrucks as $dumptruck)
                 <tr class="text-center">
-                  <td>{{ $subcon->id }}</td>
-                  <td>{{ $subcon->subcon_name}}</td>
-                  
+                  <td>{{ $dumptruck->id}}</td>
+                  <td>{{ $dumptruck->dt_code}}</td>
                   <td>
                  
-                  {!! Form::model($subcon, ['method' => 'delete', 'route' => ['subcon.destroy', $subcon->id], 'style' => 'display: inline;']) !!}
+                  {!! Form::model($dumptruck, ['method' => 'delete', 'route' => ['dumptruck.destroy', $dumptruck->id], 'style' => 'display: inline;']) !!}
                       {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                   {!! Form::close() !!}
 
+                
                
                   </td>
                 </tr>

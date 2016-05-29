@@ -29,6 +29,22 @@
     <link rel="stylesheet" href="{{ asset('/plugins/daterangepicker/daterangepicker-bs3.css') }}">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{ asset('/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="{{ asset('/plugins/iCheck/all.css') }}">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="{{ asset('/plugins/colorpicker/bootstrap-colorpicker.min.css') }}">
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="{{ asset('/plugins/timepicker/bootstrap-timepicker.min.css') }}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('/plugins/select2/select2.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('/dist/css/AdminLTE.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('/plugins/datatables/dataTables.bootstrap.css') }}">
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -66,19 +82,19 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Melchor Cavan</span>
+                  <span class="hidden-xs">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
-                      Alexander Pierce - Web Developer
+                     {{ Auth::user()->name }} - Web Developer
                       <small>Member since Nov. 2012</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
+                  <!-- <li class="user-body">
                     <div class="col-xs-4 text-center">
                       <a href="#">Followers</a>
                     </div>
@@ -88,14 +104,14 @@
                     <div class="col-xs-4 text-center">
                       <a href="#">Friends</a>
                     </div>
-                  </li>
+                  </li> -->
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -140,7 +156,7 @@
                 <i class="fa fa-dashboard"></i> <span>Create Trip</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ url('/dumptruck') }}"><i class="fa fa-circle-o"></i>Dump Truck</a></li>
+                <li class="active"><a href="{{ url('trip/create') }}"><i class="fa fa-circle-o"></i>Dump Truck</a></li>
                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> Backhoe</a></li>
               </ul>
             </li>
@@ -151,11 +167,25 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{ url('subcon/create') }}"><i class="fa fa-circle-o"></i>Sub-Contructor</a></li>
-                <li><a href="{{ url('equipment/create') }}"><i class="fa fa-circle-o"></i>Equipment</a></li>
-                <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>Editors</a></li>
+                <li><a href="{{ url('dumptruck/create') }}"><i class="fa fa-circle-o"></i>Dump Truck</a></li>
+                <li><a href="{{ url('backhoe/create') }}"><i class="fa fa-circle-o"></i>Backhoe Truck</a></li>
+                <li><a href="{{ url('type/create') }}"><i class="fa fa-circle-o"></i>Contract Type</a></li>
+                
               </ul>
             </li>
             <li class="treeview">
+              <a href="#">
+                <i class="fa fa-pie-chart"></i> 
+                <span>Reports</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{ url('daily') }}"><i class="fa fa-circle-o"></i> Daily</a></li>
+                <li><a href="{{ url('monthly') }}"><i class="fa fa-circle-o"></i> Half-Monthly</a></li>
+                <li><a href="{{ url('all') }}"><i class="fa fa-circle-o"></i> Monthly</a></li>
+              </ul>
+            </li>
+            <!-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-files-o"></i>
                 <span>Layout Options</span>
@@ -266,7 +296,7 @@
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -451,7 +481,8 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }} "></script>
+    
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -471,7 +502,7 @@
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('/plugins/knob/jquery.knob.js') }}"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js') }}"></script>
     <script src="{{ asset('/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <!-- datepicker -->
     <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
@@ -487,5 +518,88 @@
     <script src="{{ asset('/dist/js/pages/dashboard.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('/dist/js/demo.js') }}"></script>
+
+    <!-- Select2 -->
+    <script src="{{ asset('/plugins/select2/select2.full.min.js') }}"></script>
+    <!-- InputMask -->
+    <script src="{{ asset('/plugins/input-mask/jquery.inputmask.js') }}"></script>
+    <script src="{{ asset('/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+    <script src="{{ asset('/plugins/input-mask/jquery.inputmask.extensions.j') }}s"></script>
+    <!-- bootstrap color picker -->
+    <script src="{{ asset('/plugins/colorpicker/bootstrap-colorpicker.min.js') }}"></script>
+    <!-- bootstrap time picker -->
+    <script src="{{ asset('/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+    <!-- SlimScroll 1.3.0 -->
+    <script src="{{ asset('/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+    
+    <!-- DataTables -->
+    <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    
+  
+    <!-- page script -->
+
+    <script>
+      $(function () {
+        //Initialize Select2 Elements
+        $(".select2").select2();
+
+        //Datemask dd/mm/yyyy
+        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+        //Datemask2 mm/dd/yyyy
+        $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+        //Money Euro
+        $("[data-mask]").inputmask();
+
+        //Date range picker
+        $('#reservation').daterangepicker();
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+        //Date range as a button
+        $('#daterange-btn').daterangepicker(
+            {
+              ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+              },
+              startDate: moment().subtract(29, 'days'),
+              endDate: moment()
+            },
+        function (start, end) {
+          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+        );
+
+        //iCheck for checkbox and radio inputs
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+          checkboxClass: 'icheckbox_minimal-blue',
+          radioClass: 'iradio_minimal-blue'
+        });
+        //Red color scheme for iCheck
+        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+          checkboxClass: 'icheckbox_minimal-red',
+          radioClass: 'iradio_minimal-red'
+        });
+        //Flat red color scheme for iCheck
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+          checkboxClass: 'icheckbox_flat-green',
+          radioClass: 'iradio_flat-green'
+        });
+
+        //Colorpicker
+        $(".my-colorpicker1").colorpicker();
+        //color picker with addon
+        $(".my-colorpicker2").colorpicker();
+
+        //Timepicker
+        $(".timepicker").timepicker({
+          showInputs: false
+        });
+      });
+    </script>
   </body>
 </html>

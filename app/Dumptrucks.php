@@ -4,17 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Equipments extends Model
+class Dumptrucks extends Model
 {
 	protected $fillable = [
-		'equipment_id',
-		'equipment_cat'
+
+		'dt_code'
 	];
 
 
     //an equipment is used in a trip
     public function trips(){
 
-    	return $this->belongsTo('app\Trip');
+    	return $this->hasMany('App\Trips');
     }
 }

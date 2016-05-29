@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Subcons extends Model
+class Backhoes extends Model
 {
     //
     protected $fillable = [
 
-		'subcon_name'
+		'bh_code'
 	];
 
 	public function trips(){
